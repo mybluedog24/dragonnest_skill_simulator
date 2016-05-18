@@ -1,0 +1,190 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dragon Nest Defensio PVE skill simulator</title>
+<meta name="keywords" content="DN Tinkerer skill simulator,DN Engineer skill simulator,DN Alchemist skill simulator,DN Shooting Star skill simulator,DN Gear Master skill simulator,DN Adept skill simulator,DN Physician skill simulator,DN Archer skill simulator,DN Sharpshooter skill simulator,DN Acrobat skill simulator,DN Sniper skill simulator,DN Warden skill simulator,DN Tempest skill simulator,DN Windwalker skill simulator,DN Assassin skill simulator,DN Shinobi skill simulator,DN Taoist skill simulator,DN Raven skill simulator,DN Reaper skill simulator,DN Light Bringer skill simulator,DN Abyss Walker skill simulator,DN Cleric skill simulator,DN Paladin skill simulator,DN Priest skill simulator,DN Guardian skill simulator,DN Crusader skill simulator,DN Saint skill simulator,DN Inquisitor skill simulator,DN Kali skill simulator,DN Screamer skill simulator,DN Dancer skill simulator,DN Dark Summoner skill simulator,DN Soul Eater skill simulator,DN Blade Dancer skill simulator,DN Spirit Dancer skill simulator,DN Lencea skill simulator,DN Lancer skill simulator,DN Dragoon skill simulator,DN Valkyrie skill simulator,DN Sorceress skill simulator,DN Elementalist skill simulator,DN Mystic skill simulator,DN Pyromancer skill simulator,DN Ice Witch skill simulator,DN War Mage skill simulator,DN Chaos Mage skill simulator,DN Warrior skill simulator,DN Swordsman skill simulator,DN Mercenary skill simulator,DN Gladiator skill simulator,DN Lunar Knight skill simulator,DN Barbarian skill simulator,DN Destroyer skill simulator,DN Avenger skill simulator,DN Dark Avenger skill simulator," />
+<meta name="description" content="DNNA Guild SilverEdge: DN skill simulator">
+<link rel="stylesheet" type="text/css" href="style/sim.css" />
+<style type="text/css">
+body {
+	background-color: #F6F4DD;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="script/jquery.js"></script>
+<script type="text/javascript" src="script/sim_silveredge.js"></script>
+<script type="text/javascript" src="skillinfo/machina_pve.js"></script>
+<script type="text/javascript" src="json_str/DEFENSIO_json_str.js"></script>
+<div class="center_wrap">
+<span id="total_sp" style="display:none">0</span>
+<div id="skill_tmpl" style="display:none">	
+	<div class="simul_box" style="position:absolute" id="SKSIM_TMPL_BOX_ID">
+        <div class="box_off_top" id="SKSIM_TMPL_TOP_BOX"></div>
+        <div class="box_off" id="SKSIM_TMPL_MAIN_BOX">
+            <div class="box_list_area">
+                <div class="box_list_img"><a href="javascript:;" id="SKSIM_TMPL_PLUS_LINK2"><img src="image/noimg_33.gif" height="33" width="33" class="box_img_on" id="SKSIM_TMPL_ICON_IMAGE" onMouseOver="javascript:open_tooltip(this.id, event);" onMouseOut="javascript:close_tooltip(this.id);"/></a></div>
+
+                <div class="simul_btn">
+                    <ul>
+                        <li><a href="javascript:;" id="SKSIM_TMPL_PLUS_LINK"><img src="image/s_btn_plus_off.gif" id="SKSIM_TMPL_PLUS_IMAGE"  alt="plus" width="11" height="11"/></a></li>
+                        <li><a href="javascript:;" id="SKSIM_TMPL_MINUS_LINK"><img src="image/s_btn_minus_off.gif" id="SKSIM_TMPL_MINUS_IMAGE" alt="minus" width="11" height="11" /></a></li>
+                        <li><a href="javascript:;" id="SKSIM_TMPL_ALL_LINK"><img src="image/s_btn_master_off.gif" id="SKSIM_TMPL_ALL_IMAGE" alt="max" width="11" height="11" /></a></li>
+                    </ul>
+                </div>
+            </div>   
+            <div class="box_info_off" id="SKSIM_TMPL_INFO_DIV"><span id="SKSIM_TMPL_INFO_CURRENT">0</span>/<span id="SKSIM_TMPL_INFO_MAX">5</span></div>
+
+        </div>
+        <div class="box_off_bottom" id="SKSIM_TMPL_BOTTOM_BOX"></div>
+    </div>
+</div>	
+<div align="left" class="sub_contens_wrap">
+<div align="right" class="sub_contens_area"> 
+<img src="image/classes.jpg" border="0" usemap="#Map" />
+<map name="Map">
+<area shape="rect" coords="367,35,455,56" href="gladiator-pve.html" target="_self">
+<area shape="rect" coords="460,33,549,58" href="lunarknight-pve.html" target="_self">
+<area shape="rect" coords="261,34,350,58" href="barbarian-pve.html" target="_self">
+<area shape="rect" coords="166,34,256,57" href="destroyer-pve.html" target="_self">
+<area shape="rect" coords="166,104,255,126" href="pyromancer-pve.html" target="_self">
+<area shape="rect" coords="259,102,350,128" href="icewitch-pve.html" target="_self">
+<area shape="rect" coords="365,102,456,126" href="warmage-pve.html" target="_self">
+<area shape="rect" coords="460,101,550,126" href="chaosmage-pve.html" target="_self">
+<area shape="rect" coords="166,175,254,199" href="sniper-pve.html" target="_self">
+<area shape="rect" coords="260,175,349,200" href="warden-pve.html" target="_self">
+<area shape="rect" coords="364,176,454,199" href="tempest-pve.html" target="_self">
+<area shape="rect" coords="457,176,549,200" href="windwalker-pve.html" target="_self">
+<area shape="rect" coords="165,246,254,271" href="guardian-pve.html" target="_self">
+<area shape="rect" coords="259,246,349,271" href="crusader-pve.html" target="_self">
+<area shape="rect" coords="365,248,454,269" href="saint-pve.html" target="_self">
+<area shape="rect" coords="459,246,549,271" href="inquisitor-pve.html" target="_self">
+<area shape="rect" coords="165,319,254,341" href="shootingstar-pve.html" target="_self">
+<area shape="rect" coords="259,316,347,342" href="gearmaster-pve.html" target="_self">
+<area shape="rect" coords="366,316,454,342" href="adept-pve.html" target="_self">
+<area shape="rect" coords="459,318,549,342" href="physician-pve.html" target="_self">
+<area shape="rect" coords="164,386,254,412" href="souleater-pve.html" target="_self">
+<area shape="rect" coords="259,388,349,413" href="darksummoner-pve.html" target="_self">
+<area shape="rect" coords="363,389,454,414" href="spiritdancer-pve.html" target="_self">
+<area shape="rect" coords="459,389,548,413" href="bladedancer-pve.html" target="_self">
+<area shape="rect" coords="260,461,350,483" href="raven-pve.html" target="_self">
+<area shape="rect" coords="165,458,255,484" href="reaper-pve.html" target="_self">
+<area shape="rect" coords="367,460,455,483" href="lightbringer-pve.html" target="_self">
+<area shape="rect" coords="461,458,549,483" href="abysswalker-pve.html" target="_self">
+<area shape="rect" coords="166,531,255,554" href="dragoon-pve.html" target="_self">
+<area shape="rect" coords="260,531,349,556" href="valkyrie-pve.html" target="_self">
+<area shape="rect" coords="165,603,255,625" href="darkavenger-pve.html" target="_self">
+<area shape="rect" coords="166,673,255,695" href="ruina-pve.html" target="_self">
+<area shape="rect" coords="260,673,349,695" href="defensio-pve.html" target="_self">
+</map>
+
+<div align="left"> - If experiencing a glitch when using "-", please reset all skill points. <br>
+- Must activate ultimate skill a first, then activate prerequisites for ultimate skill B to trigger ultimate skill B.<br>
+ </div>
+    <div class="simul_sch">
+        <table width="600" border="0" cellspacing="0" cellpadding="0">
+
+            <tr>
+                <td width="120" align="left" class="result_text">Level <input name="chlv" id="chlv" type="text" value="90" /> <a href="javascript:reset_skill_tree(false);"><img src="image/btn_apply.gif" alt="Calculate" style="vertical-align:top"/></span></td>
+				<td width="350" align="center"></td>
+                <td width="100" align="right"><a href="javascript:reset_skill_tree(false);"><img src="image/btn_a_init.gif" style="vertical-align:top" alt="Reset All"/></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="clear:both"></div>
+    <div class="simul_wrap">
+        <div class="simul_job_area">
+            <div class="simul_job_top"></div>
+           	<div class="simul_job">
+                <div class="simul_tab2">
+					<ul>
+						<li><a href="javascript:switch_tab('MACHINA');"><img src="image/tab/simul_tab_MACHINA_on.gif" id="MACHINA_tabbox" /></a></li>
+                        <li><a href="javascript:switch_tab('MACHINA_PATRONA');"><img src="image/tab/simul_tab_MACHINA_PATRONA_off.gif" id="MACHINA_PATRONA_tabbox"/></a></li>
+						<li><a href="javascript:switch_tab('MACHINA_PATRONA_DEFENSIO');"><img src="image/tab/simul_tab_MACHINA_PATRONA_DEFENSIO_off.gif" id="MACHINA_PATRONA_DEFENSIO_tabbox"/></a></li>
+					</ul>
+                    <div style="clear:both"></div>
+           	  	</div>
+                <div class="simul_sp_top"></div>
+                <div class="simul_sp">
+                   	<table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                           	<td class="simul_sp_com_l" width="118">SP Spent</td>
+
+                            <td class="simul_sp_com_r" width="46"><span id="used_sp">0</span></td>
+                        </tr>
+                        <tr>
+                           	<td colspan="2" class="simul_sp_line"></td>
+                        </tr>
+                        <tr>
+                            <td class="simul_sp_pad_l" id="MACHINA_name">Machina</td>
+                            <td class="simul_sp_pad_r"><span id="MACHINA_spent_sp">0</span>/<span id="class1_limit">0</span></td>
+                        </tr>
+                        <tr>
+                           	<td class="simul_sp_pad_l" id="MACHINA_PATRONA_name">Patrona</td>
+                            <td class="simul_sp_pad_r"><span id="MACHINA_PATRONA_spent_sp">0</span>/<span id="class2_limit">0</span></td>
+                        </tr>
+						<tr>
+                           	<td class="simul_sp_pad_l" id="MACHINA_PATRONA_DEFENSIO_name">Defensio</td>
+                            <td class="simul_sp_pad_r"><span id="MACHINA_PATRONA_DEFENSIO_spent_sp">0</span>/<span id="class3_limit">0</span></td>
+						</tr>
+                        <tr>
+                           	<td colspan="2" class="simul_sp_line"></td>
+
+                        </tr>
+                        <tr>
+                           	<td class="simul_sp_com_l">SP Left</td>
+                            <td class="simul_sp_com_r"><span id="remain_sp">0</span></td>
+                        </tr>
+                    </table>
+               	</div>
+                <div class="simul_sp_bottom"></div>
+
+
+                </div>
+           	<div class="simul_job_bottom"></div>
+        </div>
+		<div class="simul_r_area">
+            <div class="simul_top"></div>
+			<div class="simul_area" id="MACHINA_div">
+			</div>
+			<div class="simul_area" id="MACHINA_PATRONA_div" style="display: none">
+			</div>
+			<div class="simul_area" id="MACHINA_PATRONA_DEFENSIO_div" style="display: none;">
+			</div>
+            <div class="simul_bottom"></div>	
+        </div>
+        <div style="clear:both"></div>
+
+    </div>
+	<div id="tooltip_area">
+       	
+	</div>
+</div>
+</div>
+
+<script>
+
+var g_chlv = parseInt($('#chlv').val());
+var s = eval('(' + json_str + ')');
+
+
+
+var class1 = 'MACHINA';
+
+var class2 = 'PATRONA';
+
+var class3 = 'DEFENSIO';
+
+
+
+skill_draw_tree('ALL');
+
+</script>
+
+</div>
+
+</body>
+</html>
